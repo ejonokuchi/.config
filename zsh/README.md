@@ -1,4 +1,4 @@
-# .config/zsh
+# zsh
 
 A simple, fast configuration for zsh.
 
@@ -25,7 +25,7 @@ If you don't have a lot of time or interest, the easiest way to get set up is a 
 
 First create a backup copy of your current configuration. The usual location is `~/.zshrc`.
 
-Move the `zsh` subdirectory into `~/.config` and create a symlink to `.zshenv`:
+Move the `zsh` subdirectory into `~/.config`, and create a symlink to `.zshenv`:
 
 ```bash
 [[ -e "${HOME}/.config" ]] || mkdir "${HOME}/.config"
@@ -52,7 +52,7 @@ Several external tools are referenced in the configuration.
 System packages, via `brew install`:
 - [tmux](https://github.com/tmux/tmux/wiki): terminal multiplexer
 - [tree](https://linux.die.net/man/1/tree): list files in a tree-like format (see above)
-- [zsh-history-substring-search](https://linux.die.net/man/1/tree): search history for partial commands
+- [zsh-history-substring-search](https://github.com/zsh-users/zsh-history-substring-search): search zsh history for partial commands
 
 Others, via the links provided:
 - [Python 3.9](https://www.python.org/downloads/release/python-3910/)
@@ -66,9 +66,9 @@ Others, via the links provided:
 
 ### XDG config directory
 
-Uses `.zshenv` to set the `XDG_CONFIG_HOME` to `~/.config`. This keeps the home directory uncluttered.
+Uses `.zshenv` to set the `XDG_CONFIG_HOME` to `~/.config`.
 
-Keep this in mind when installing new software. Because it's platform-specific, applications often default to using the home directory.
+This keeps the home directory uncluttered. Keep a mental note, since many applications often default to using the home directory.
 
 
 ### Startup files

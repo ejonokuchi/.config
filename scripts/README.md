@@ -1,3 +1,3 @@
-# .config/scripts
+# scripts
 
 Simple bash helpers.

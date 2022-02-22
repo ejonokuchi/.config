@@ -1,4 +1,4 @@
-# .config/warp
+# warp
 
 Warp configuration.
 
@@ -16,9 +16,10 @@ Currently just a custom theme: `emj`.
 
 Warp is currently still in beta. I have several invites left, so if you'd like one, [let me know](https://ejonokuchi.com/about.html#contact).
 
-Warp doesn't seem to detect symlinks, so you'll have to copy the themes over directly:
+Warp doesn't seem to detect symlinks, so you'll have to copy the themes over directly. From `~/.config/warp/themes`:
 
 ```bash
+mkdir -p "${HOME}/.warp/themes"
 cp "${HOME}/.config/warp/themes"/* "${HOME}/.warp/themes/"
 ```
 

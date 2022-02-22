@@ -1,4 +1,4 @@
-# .config
+# ejonokuchi/.config
 
 Configurations for various developer tools, e.g. zsh, tmux, and vscode.
 
@@ -46,12 +46,12 @@ The script will install system packages, and copy or symlink the configuration f
 
 A starting point for configuring a new machine, for personal reference.
 
-Note: `zsh` is included from macOS Catalina and onward (2019+).
+Note: zsh is included from macOS Catalina and onward (2019+).
 
 Applications:
 - [VS Code](https://code.visualstudio.com/): IDE and Markdown notes
 - [Warp](https://www.warp.dev/): Rust-based terminal for Mac[^1]
-- [iTerm](https://www.warp.dev/): terminal emulator for Mac
+- [iTerm](https://iterm2.com/): terminal emulator for Mac
 - [tmux](https://github.com/tmux/tmux/wiki): terminal multiplexer
 - [Spotify](https://www.spotify.com/us/download/other/)
 
@@ -62,7 +62,7 @@ System packages, via `brew install`:
 - [ngrok](https://ngrok.com/): expose local ports to public URLs
 - [tldr](https://tldr.sh/): simplified man pages
 - [tree](https://linux.die.net/man/1/tree): list files in a tree-like format (see above)
-- [zsh-history-substring-search](https://linux.die.net/man/1/tree): search zsh history for partial commands
+- [zsh-history-substring-search](https://github.com/zsh-users/zsh-history-substring-search): search zsh history for partial commands
 
 Menu bar add-ons:
 - [Flux](https://justgetflux.com/): adjusts display to reduce blue light at night

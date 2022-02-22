@@ -1,4 +1,4 @@
-# .config/iterm
+# iterm
 
 iTerm configuration.
 
