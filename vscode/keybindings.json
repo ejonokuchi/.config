@@ -1,0 +1,92 @@
+//
+// Keyboard shortcuts for VS Code.
+//
+[
+  // ---------------
+  // Unbind defaults
+  // ---------------
+  {
+    "key": "cmd+b",
+    "command": "-workbench.action.toggleSidebarVisibility"
+  },
+  {
+    "key": "cmd+k f",
+    "command": "-workbench.action.closeFolder",
+    "when": "emptyWorkspaceSupport && workbenchState != 'empty'"
+  },
+  {
+    "key": "cmd+k o",
+    "command": "-workbench.action.files.showOpenedFileInNewWindow"
+  },
+  {
+    "key": "cmd+k t",
+    "command": "-notebook.cell.collapseCellOutput"
+  },
+  {
+    "key": "cmd+k t",
+    "command": "-notebook.cell.expandCellOutput"
+  },
+
+  // ----------------
+  // Sidebar controls
+  // ----------------
+  // Use chords with `cmd+k` to manipulate the sidebar and its widgets.
+  //    `b` for "sideBar"
+  //    `a` for "Active editor"
+  //    `e` for "open Editors"
+  //    `o` for "Outline"
+  //    `t` for "Timeline"
+
+  // `b` toggles the sidebar.
+  {
+    "key": "cmd+k b",
+    "command": "workbench.action.toggleSidebarVisibility"
+  },
+
+  // `a` resets focus to the active editor.
+  {
+    "key": "cmd+k a",
+    "command": "workbench.action.focusActiveEditorGroup"
+  },
+
+  // `e` toggles the open editors widget.
+  {
+    "key": "cmd+k e",
+    "command": "workbench.files.action.focusOpenEditorsView"
+  },
+  {
+    "key": "cmd+k shift+e",
+    "command": "workbench.explorer.openEditorsView.toggleVisibility"
+  },
+
+  // Note: use `shift+cmd+e` to focus on the file explorer widget.
+  // This is a default shortcut.
+
+  // `o` toggles the outline.
+  {
+    "key": "cmd+k o",
+    "command": "extension.multiCommand.execute",
+    // There's a bug with VS Code where `outline.focus` doesn't actually focus
+    // the outline if it's currently hidden, it only shows it. So we do a
+    // "double-tap" to always focus the outline view, regardless of context.
+    "args": {
+      "sequence": [
+        "outline.focus",
+        "outline.focus"
+      ]
+    }
+  },
+  {
+    "key": "cmd+k shift+o",
+    "command": "outline.toggleVisibility"
+  },
+  // `t` toggles the timeline.
+  {
+    "key": "cmd+k t",
+    "command": "timeline.focus"
+  },
+  {
+    "key": "cmd+k shift+t",
+    "command": "timeline.toggleVisibility"
+  }
+]

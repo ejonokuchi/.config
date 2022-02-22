@@ -1,0 +1,108 @@
+//
+// Preferences for VS Code.
+//
+{
+  // -------
+  // General
+  // -------
+  "telemetry.telemetryLevel": "off", // = 10% increase
+
+  // ---------
+  // Interface
+  // ---------
+  "workbench.colorTheme": "Monokai",
+  "editor.fontFamily": "Inconsolata, Menlo, Monaco, 'Courier New', monospace",
+  "editor.renderLineHighlight": "gutter",
+  "window.openFoldersInNewWindow": "on",
+
+  // -------
+  // Editing
+  // -------
+  "editor.formatOnSave": true,
+  "editor.useTabStops": false,
+  "files.defaultLanguage": "${activeEditorLanguage}",
+  "files.trimTrailingWhitespace": true,
+  "diffEditor.ignoreTrimWhitespace": false,
+
+  // --------
+  // Terminal
+  // --------
+  // Sync with theme from iTerm/Warp for the feeling of being in the terminal.
+  "workbench.colorCustomizations" : {
+    "terminal.background" : "#212127",
+    "terminal.foreground" : "#c8c8d0",
+    "terminal.ansiBlack": "#212127",
+    "terminal.ansiRed": "#cc6a75",
+    "terminal.ansiGreen": "#accc92",
+    "terminal.ansiYellow": "#eacd95",
+    "terminal.ansiBlue": "#95b1cd",
+    "terminal.ansiMagenta": "#cb91c1",
+    "terminal.ansiCyan": "#92cacb",
+    "terminal.ansiWhite": "#c8c8d0",
+    "terminal.ansiBrightBlack": "#717184",
+    "terminal.ansiBrightRed": "#cc6a75",
+    "terminal.ansiBrightGreen": "#accc92",
+    "terminal.ansiBrightYellow": "#eacd95",
+    "terminal.ansiBrightBlue": "#95b1cd",
+    "terminal.ansiBrightMagenta": "#cb91c1",
+    "terminal.ansiBrightCyan": "#92cacb",
+    "terminal.ansiBrightWhite": "#e9e9ec",
+    "terminal.selectionBackground": "#717184"
+  },
+
+  // ---------
+  // Languages
+  // ---------
+
+  // Markdown
+  "[markdown]": {
+    "editor.defaultFormatter": "yzhang.markdown-all-in-one"
+  },
+  "markdown.extension.list.indentationSize": "inherit",
+  "markdown.preview.fontSize": 13,
+  "markdown.preview.lineHeight": 1.5,
+  "markdown-pdf.margin.top": "1cm",
+  "markdown-pdf.omitBackground": true,
+
+  // Python
+  "[python]": {
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": true
+    },
+    "editor.rulers": [88]
+  },
+  "python.analysis.extraPaths": ["/Users/evan/.pyenvs/core"],
+  "python.defaultInterpreterPath": "/Users/evan/.pyenvs/core/bin/python",
+  "python.formatting.provider": "black",
+  "python.formatting.blackPath": "/Users/evan/.pyenvs/core/bin/black",
+  "python.formatting.blackArgs": ["--target-version=py39"],
+  "python.linting.pylintEnabled": false,
+  "python.sortImports.args": ["--profile", "black"],
+  "autoDocstring.docstringFormat": "numpy",
+  "autoDocstring.generateDocstringOnEnter": false,
+  "workbench.editorAssociations": {
+    "*.ipynb": "jupyter.notebook.ipynb"
+  },
+
+  // YAML
+  "[yaml]": {
+    "editor.rulers": [88]  // follow Python/black convention
+  },
+
+  // Javascript +
+  "[javascript]": {
+    "editor.rulers": [80]
+  },
+  "javascript.preferences.quoteStyle": "double",
+  "typescript.format.semicolons": "insert",
+  "typescript.preferences.quoteStyle": "double",
+
+  // CSS +
+  "[sass]": {
+    "editor.rulers": [80]
+  },
+  "scss.lint.duplicateProperties": "warning",
+  "scss.lint.float": "warning",
+  "scss.lint.important": "warning",
+  "window.zoomLevel": 1
+}
