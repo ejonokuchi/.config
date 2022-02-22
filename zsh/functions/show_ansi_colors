@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+#
+# Print out the currently configured ANSI colors.
+#
+
+# Adapted from: https://github.com/chriskempson/base16-shell/blob/master/colortest
+
+function show_ansi_colors() {
+    ansi_mappings=(
+        black
+        red
+        green
+        yellow
+        blue
+        magenta
+        cyan
+        white
+        bright_black
+        bright_red
+        bright_green
+        bright_yellow
+        bright_blue
+        bright_magenta
+        bright_cyan
+        bright_white
+    )
+
+    # Print each ANSI color, and a few extra xterm colors.
+    for padded_value in `seq -w 0 21`; do
+        color_variable="${padded_value}"
+        eval current_color=\$${color_variable}
+        # get rid of slashes, and uppercase
+        current_color=$(echo ${current_color//\//} | tr '[:lower:]' '[:upper:]')
+        non_padded_value=$((10#$padded_value))
+        ansi_label=${ansi_mappings[$non_padded_value + 1]}
+        block=$(printf "\x1b[48;5;${non_padded_value}m____________________")
+        foreground=$(printf "\x1b[38;5;${non_padded_value}m$color_variable")
+        printf "%s %-20s %s\x1b[0m\n" $foreground ${ansi_label:-"-"} $block
+    done
+}

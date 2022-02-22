@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+#
+# Shim to lazy-load rvm (Ruby version manager).
+#
+
+function rvm() {
+    unset -f rvm
+
+    # Load RVM into the shell session, as a function.
+    [[ -s "${HOME}/.rvm/scripts/rvm" ]] && source "${HOME}/.rvm/scripts/rvm"
+
+    rvm "${@}"
+}

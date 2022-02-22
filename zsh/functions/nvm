@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+#
+# Shim to lazy-load nvm (Node version manager).
+#
+
+function nvm() {
+    unset -f nvm
+
+    # Load nvm into the shell session, as a function.
+    [ -s "${NVM_DIR}/nvm.sh" ] && source "${NVM_DIR}/nvm.sh"
+
+    # Enable nvm bash completion.
+    [ -s "${NVM_DIR}/bash_completion" ] && source "${NVM_DIR}/bash_completion"
+
+    nvm "${@}"
+}

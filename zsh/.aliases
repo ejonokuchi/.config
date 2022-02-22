@@ -1,0 +1,81 @@
+#!/usr/bin/env bash
+#
+# User aliases.
+#
+
+#########
+# Files #
+#########
+
+# Listing directories
+alias la="ls -al"
+alias ll="ls -l"
+alias lst="tree --dirsfirst"
+alias lstp="tree --dirsfirst -I '__pycache__|venv'"
+
+# Previewing
+alias head20="head -n 20"
+alias head50="head -n 50"
+alias tail20="tail -n 20"
+alias tail50="tail -n 50"
+
+
+#######
+# git #
+#######
+
+alias gs="git status"
+alias gd="git diff"
+alias gds="git diff --staged"
+alias ga="git add"
+alias gr="git reset"
+alias gc="git commit"
+alias gt="git tag"
+alias gl="git log --all --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n'' %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'"
+alias glo="git log --all --decorate --oneline --graph"
+alias gp="git push"
+alias gpl="git pull"
+alias gb="git branch"
+alias gch="git checkout"
+alias gcb="git checkout -b"
+alias grt="git remote"
+
+
+########
+# tmux #
+########
+
+alias tm="tmux"
+alias tmk="tmux kill-session -t"
+
+
+#############
+# Functions #
+#############
+
+# See: $ZDOTDIR/functions
+alias tsh="time_shell_startup"
+alias lscolors="show_ansi_colors"
+
+
+######################
+# Python virtualenvs #
+######################
+
+# virtualenv & virtualenvwrapper
+alias vw="workon"
+alias vmk="mkvirtualenv"
+alias vls="lsvirtualenv"
+alias vrm="rmvirtualenv"
+alias vd="deactivate"
+
+
+#########
+# Other #
+#########
+
+# Google Cloud SDK
+alias gcp="gcloud"
+
+# leetcode-cli
+alias lc="leetcode"
