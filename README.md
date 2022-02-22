@@ -1,14 +1,14 @@
-# ejonokuchi/.config
+# ejonokuchi/config
 
-Configurations for various developer tools, e.g. zsh, tmux, and vscode.
+My configurations for various developer tools, e.g. zsh, tmux, and vscode.
 
-Directly from my `~/.config` directory. Caveat emptor.
+Caveat emptor.
 
 
 ## Directory
 
 ```
-~/.config
+~/config
 ├── iterm
 │   └── com.googlecode.iterm2.plist
 ├── scripts
@@ -44,7 +44,7 @@ The script will install system packages, and copy or symlink the configuration f
 
 ## Tools
 
-A starting point for configuring a new machine, for personal reference.
+These are the tools I would add to a new computer, for personal reference.
 
 Note: zsh is included from macOS Catalina and onward (2019+).
 

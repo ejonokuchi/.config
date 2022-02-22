@@ -3,8 +3,8 @@
 # Install the full configuration.
 #
 
-# Path to the downloaded config directory. Defaults to ~/.config.
-CONFIG_DIR=${1:-"${HOME}/.config"}
+# Path to the downloaded config directory. Defaults to the current working directory.
+CONFIG_DIR=${1:-$(pwd)}
 
 
 ####################
@@ -14,7 +14,7 @@ CONFIG_DIR=${1:-"${HOME}/.config"}
 # Import printing helpers.
 . ./scripts/print || {
     printf "\n\e[31mError: unable to load helper script!\e[0m\n\n"
-    echo "Please run this command directly from the .config directory with:"
+    echo "Please run this command directly from the config directory with:"
     echo "   ./install.sh"
     echo ""
     echo "Currently in: $(pwd)"
@@ -36,7 +36,7 @@ function with_backup() {
     local src=$2
     local dst=$3
 
-    [[ -e "${dst}" ]] && backup "${dst}"
+    [[ -e "${dst}" || -L "${dst}" ]] && backup "${dst}"
     $cmd "${src}" "${dst}"
 }
 
@@ -82,50 +82,54 @@ else
     exit 1
 fi
 
+
 # Link configurations
 
 print_header "Linking configurations..."
 
 # Use direct file paths instead of globs, to avoid unexpected behavior.
+if [[ ! -e "${HOME}/.config" ]]; then
+    print_warn "No ~/.config directory detected, creating..."
+    mkdir "${HOME}/.config"
+fi
 
 # iTerm
 print_info "Note: iTerm preferences must be configured manually. See: ${CONFIG_DIR}/iterm/README.md"
 
 # scripts
-print_info "Copying scripts"
-[[ -e "${HOME}/.config/scripts" ]] || mkdir -p "${HOME}/.config/scripts"
-with_backup "cp" "${CONFIG_DIR}/scripts/print" "${HOME}/.config/scripts/print"
+print_info "Linking scripts to: ${HOME}/.config/scripts"
+with_backup "ln -s" "${CONFIG_DIR}/scripts" "${HOME}/.config/scripts"
 
 # tmux
-print_info "Symlinking tmux configuration"
+print_info "Linking tmux configuration to: ${HOME}/.tmux.conf"
 with_backup "ln -s" "${CONFIG_DIR}/tmux/.tmux.conf" "${HOME}/.tmux.conf"
 
 # VS Code
-print_info "Symlinking VS Code preferences"
+print_info "Linking VS Code preferences to: ${HOME}/Library/Application Support/Code/User"
 with_backup "ln -s" "${CONFIG_DIR}/vscode/keybindings.json" "${HOME}/Library/Application Support/Code/User/keybindings.json"
 with_backup "ln -s" "${CONFIG_DIR}/vscode/settings.json" "${HOME}/Library/Application Support/Code/User/settings.json"
 
 # Warp
-print_info "Copying Warp theme"
 [[ -e "${HOME}/.warp/themes" ]] || mkdir -p "${HOME}/.warp/themes"
-# Links aren't detected by Warp, so a copy is necessary.
+# Symlinked themes aren't detected by Warp, so a hard copy is necessary.
+print_info "Copying Warp theme to: ${HOME}/.warp/themes/"
 with_backup "cp -r" "${CONFIG_DIR}/warp/themes/emj.yaml" "${HOME}/.warp/themes/emj.yaml"
 
 # zsh
-# Make copies for zsh, as the XDG_CONFIG variables are defined by .zshenv.
-[[ -e "${HOME}/.config/zsh/functions" ]] || mkdir -p "${HOME}/.config/zsh/functions"
-print_info "Copying zsh functions"
-with_backup "cp -r" "${CONFIG_DIR}/zsh/functions" "${HOME}/.config/zsh/functions"
-print_info "Copying zsh dotfiles"
-with_backup "cp" "${CONFIG_DIR}/zsh/.aliases" "${HOME}/.config/zsh/.aliases"
-with_backup "cp" "${CONFIG_DIR}/zsh/.zlogin" "${HOME}/.config/zsh/.zlogin"
-with_backup "cp" "${CONFIG_DIR}/zsh/.zlogout" "${HOME}/.config/zsh/.zlogout"
-with_backup "cp" "${CONFIG_DIR}/zsh/.zprofile" "${HOME}/.config/zsh/.zprofile"
-with_backup "cp" "${CONFIG_DIR}/zsh/.zshenv" "${HOME}/.config/zsh/.zshenv"
-with_backup "cp" "${CONFIG_DIR}/zsh/.zshrc" "${HOME}/.config/zsh/.zshrc"
-print_info "Symlinking .zshenv"
-# Also create the required link for .zshenv, which must live in the home directory.
-with_backup "ln -s" "${HOME}/.config/zsh/.zshenv" "${HOME}/.zshenv"
+[[ -e "${HOME}/.config/zsh" ]] || mkdir -p "${HOME}/.config/zsh"
+
+print_info "Linking zsh functions to: ${HOME}/.config/zsh/functions"
+with_backup "ln -s" "${CONFIG_DIR}/zsh/functions" "${HOME}/.config/zsh/functions"
+
+print_info "Linking zsh dotfiles to: ${HOME}/.config/zsh"
+with_backup "ln -s" "${CONFIG_DIR}/zsh/.aliases" "${HOME}/.config/zsh/.aliases"
+with_backup "ln -s" "${CONFIG_DIR}/zsh/.zlogin" "${HOME}/.config/zsh/.zlogin"
+with_backup "ln -s" "${CONFIG_DIR}/zsh/.zlogout" "${HOME}/.config/zsh/.zlogout"
+with_backup "ln -s" "${CONFIG_DIR}/zsh/.zprofile" "${HOME}/.config/zsh/.zprofile"
+with_backup "ln -s" "${CONFIG_DIR}/zsh/.zshrc" "${HOME}/.config/zsh/.zshrc"
+
+print_info "Linking zsh environment file to: ${HOME}/.zshenv"
+with_backup "ln -s" "${CONFIG_DIR}/zsh/.zshenv" "${HOME}/.zshenv"
 
 
 print_info "\nDone!\n"

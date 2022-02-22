@@ -14,7 +14,7 @@ To install iTerm, see [iterm2.com](https://iterm2.com/).
 
 To add these preferences, navigate to `Preferences > General > Preferences` and select the folder to load them from:
 
-<img width="853" alt="iterm-preferences" src="https://user-images.githubusercontent.com/19394509/154933405-49b2aa0c-2318-4b65-b8df-56672d686d0e.png">
+<img width="897" alt="iterm-prefs" src="https://user-images.githubusercontent.com/19394509/155221146-9b62dae4-3070-4d7d-9f7f-bcd13e9e2725.png">
 
 To edit the theme, navigate to  `Preferences > Profiles > Colors`, with the menu in the bottom right that says `Color Presets...`:
 

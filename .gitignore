@@ -1,22 +1,5 @@
-# Ignore everything by default
-*/
-
-# Include
-!.gitignore
-!LICENSE
-!README.md
-!iterm
-!scripts
-!tmux
-!vscode
-!warp
-!warp/themes
-!zsh
-!zsh/functions
-!.zshenv
-
+# macOS
 .DS_Store
-iterm/AppSupport
-zsh/.zcompdump
-zsh/.zsh_history
-scratch.md
+
+# Hidden dirs
+_*/

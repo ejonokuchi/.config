@@ -8,7 +8,7 @@ If you don't have a lot of time or interest, the easiest way to get set up is a 
 ## Directory
 
 ```
-~/.config/zsh
+~/config/zsh
 ├── functions                   # User functions
 │   └── ...
 ├── .aliases                    # User aliases
@@ -25,12 +25,23 @@ If you don't have a lot of time or interest, the easiest way to get set up is a 
 
 First create a backup copy of your current configuration. The usual location is `~/.zshrc`.
 
-Move the `zsh` subdirectory into `~/.config`, and create a symlink to `.zshenv`:
+Create symlinks for the functions and dotfiles, from `~/config`:
 
 ```bash
-[[ -e "${HOME}/.config" ]] || mkdir "${HOME}/.config"
-mv .config/zsh "${HOME}/.config/zsh"
-ln -s "${HOME}/.config/zsh/.zshenv" "${HOME}/.zshenv"
+[[ -e "${HOME}/.config/zsh" ]] || mkdir -p "${HOME}/.config/zsh"
+
+# Link functions to: ~/.config/zsh/functions
+ln -s "${HOME}/config/zsh/functions" "${HOME}/.config/zsh/functions"
+
+# Link dotfiles to: ~/.config/zsh
+ln -s "${HOME}/config/zsh/.aliases" "${HOME}/.config/zsh/.aliases"
+ln -s "${HOME}/config/zsh/.zlogin" "${HOME}/.config/zsh/.zlogin"
+ln -s "${HOME}/config/zsh/.zlogout" "${HOME}/.config/zsh/.zlogout"
+ln -s "${HOME}/config/zsh/.zprofile" "${HOME}/.config/zsh/.zprofile"
+ln -s "${HOME}/config/zsh/.zshrc" "${HOME}/.config/zsh/.zshrc"
+
+# Link env file to: ~/
+ln -s "${HOME}/config/zsh/.zshenv" "${HOME}/.zshenv"
 ```
 
 Be sure to review the implementation details below, and edit as needed.

@@ -7,10 +7,10 @@ VS Code settings.
 
 To install VS Code, see [code.visualstudio.com](https://code.visualstudio.com/download).
 
-To link the settings and keybindings from `~/.config/vscode`:
+To link the settings and keybindings from `~/config/vscode`:
 
 ```bash
-ln -s "${HOME}/.config/vscode"/*.json "${HOME}/Library/Application Support/Code/User/"
+ln -s "${HOME}/config/vscode"/*.json "${HOME}/Library/Application Support/Code/User/"
 ```
 
 For non-Mac users, [see the documentation](https://code.visualstudio.com/docs/getstarted/settings#_settings-file-locations) for alternate paths to the User settings file.

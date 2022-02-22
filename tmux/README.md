@@ -11,8 +11,8 @@ Install tmux:
 brew install tmux
 ```
 
-Symlink this configuration from `~/.config/tmux`:
+Symlink this configuration from `~/config/tmux`:
 
 ```bash
-ln -s "${HOME}/.config/tmux/.tmux.conf" "${HOME}/.tmux.conf"
+ln -s "${HOME}/config/tmux/.tmux.conf" "${HOME}/.tmux.conf"
 ```
