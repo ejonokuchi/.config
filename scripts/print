@@ -1,0 +1,94 @@
+#!/usr/bin/env bash
+#
+# Printing utilities for user-friendly scripts.
+#
+
+# ANSI color variables.
+FG_BLACK="\e[30m"
+FG_RED="\e[31m"
+FG_GREEN="\e[32m"
+FG_YELLOW="\e[33m"
+FG_BLUE="\e[34m"
+FG_MAGENTA="\e[35m"
+FG_CYAN="\e[36m"
+FG_WHITE="\e[37m"
+FG_B_BLACK="\e[90m"
+FG_B_RED="\e[91m"
+FG_B_GREEN="\e[92m"
+FG_B_YELLOW="\e[93m"
+FG_B_BLUE="\e[94m"
+FG_B_MAGENTA="\e[95m"
+FG_B_CYAN="\e[96m"
+FG_B_WHITE="\e[97m"
+BG_BLACK="\e[40m"
+BG_RED="\e[41m"
+BG_GREEN="\e[42m"
+BG_YELLOW="\e[43m"
+BG_BLUE="\e[44m"
+BG_MAGENTA="\e[45m"
+BG_CYAN="\e[46m"
+BG_WHITE="\e[47m"
+BG_B_BLACK="\e[100m"
+BG_B_RED="\e[101m"
+BG_B_GREEN="\e[102m"
+BG_B_YELLOW="\e[103m"
+BG_B_BLUE="\e[104m"
+BG_B_MAGENTA="\e[105m"
+BG_B_CYAN="\e[106m"
+BG_B_WHITE="\e[107m"
+
+COLOR_RESET="\e[0m"
+
+
+# Print a formatted header.
+#
+# Arguments:
+#   msg : Message to print.
+#   width : Width of the wrapping text decoration. Use 0 to set the width by the msg.
+#   char : Character for text decoration.
+function print_header() {
+    local msg=$1
+    local width=${2:-0}
+    local char=${3:-"="}
+
+    if [[ $width < 1 ]]; then
+        width=${#msg}
+    fi
+
+    echo ""
+    printf ''"${char}"'%.0s' $(seq 1 $width)
+    echo -e "\n${msg}"
+    printf ''"${char}"'%.0s' $(seq 1 $width)
+    echo ""
+}
+
+
+# Print a message in color.
+#
+# Arguments:
+#   color : Color escape to provide before the msg.
+#   msg : Message to print.
+function print_color() {
+    printf "${1}${2}${COLOR_RESET}\n"
+}
+
+# Print various colored messages.
+function print_success() {
+    print_color $FG_GREEN "${1}"
+}
+
+function print_info() {
+    print_color $FG_WHITE "${1}"
+}
+
+function print_debug() {
+    print_color $FG_B_BLACK "${1}"
+}
+
+function print_warn() {
+    print_color $FG_YELLOW "${1}"
+}
+
+function print_error() {
+    print_color $FG_RED "${1}"
+}
