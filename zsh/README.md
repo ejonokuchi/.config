@@ -20,6 +20,8 @@ If you don't have a lot of time or interest, the easiest way to get set up is a 
 └── README.md
 ```
 
+For more information about the various startup files, check out [Startup Files](#startup-files).
+
 
 ## Installation
 
