@@ -93,6 +93,7 @@ print_info "Note: iTerm preferences must be configured manually. See: ${CONFIG_D
 
 # scripts
 print_info "Copying scripts"
+[[ -e "${HOME}/.config/scripts" ]] || mkdir -p "${HOME}/.config/scripts"
 with_backup "cp" "${CONFIG_DIR}/scripts/print" "${HOME}/.config/scripts/print"
 
 # tmux
@@ -106,11 +107,13 @@ with_backup "ln -s" "${CONFIG_DIR}/vscode/settings.json" "${HOME}/Library/Applic
 
 # Warp
 print_info "Copying Warp theme"
+[[ -e "${HOME}/.warp/themes" ]] || mkdir -p "${HOME}/.warp/themes"
 # Links aren't detected by Warp, so a copy is necessary.
 with_backup "cp -r" "${CONFIG_DIR}/warp/themes/emj.yaml" "${HOME}/.warp/themes/emj.yaml"
 
 # zsh
 # Make copies for zsh, as the XDG_CONFIG variables are defined by .zshenv.
+[[ -e "${HOME}/.config/zsh/functions" ]] || mkdir -p "${HOME}/.config/zsh/functions"
 print_info "Copying zsh functions"
 with_backup "cp -r" "${CONFIG_DIR}/zsh/functions" "${HOME}/.config/zsh/functions"
 print_info "Copying zsh dotfiles"
