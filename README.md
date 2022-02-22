@@ -9,6 +9,8 @@ Caveat emptor.
 
 ```
 ~/config
+├── git
+│   └── config
 ├── iterm
 │   └── com.googlecode.iterm2.plist
 ├── scripts

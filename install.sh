@@ -93,6 +93,11 @@ if [[ ! -e "${HOME}/.config" ]]; then
     mkdir "${HOME}/.config"
 fi
 
+# git
+[[ -e "${HOME}/.config/git" ]] || mkdir -p "${HOME}/.config/git"
+print_info "Linking git configuration"
+with_backup "ln -s" "${CONFIG_DIR}/git/config" "${HOME}/.config/git/config"
+
 # iTerm
 print_info "Note: iTerm preferences must be configured manually. See: ${CONFIG_DIR}/iterm/README.md"
 

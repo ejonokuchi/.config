@@ -1,0 +1,11 @@
+# Global git configuration
+
+[user]
+	name = evan
+	email = ejonokuchi@gmail.com
+
+[core]
+	editor = code --wait
+
+[init]
+	defaultBranch = main
