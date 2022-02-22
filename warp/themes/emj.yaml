@@ -1,0 +1,62 @@
+#
+# A simple warp theme with soft colors.
+#
+
+# Define ANSI colors.
+ansi_colors:
+  color00: &black "#212127"
+  color01: &red "#cc6a75"
+  color02: &green "#accc92"
+  color03: &yellow "#eacd95"
+  color04: &blue "#95b1cd"
+  color05: &magenta "#cb91c1"
+  color06: &cyan "#92cacb"
+  color07: &white "#c8c8d0"
+  color08: &b_black "#717184"
+  color09: &b_red "#cc6a75"
+  color10: &b_green "#accc92"
+  color11: &b_yellow "#eacd95"
+  color12: &b_blue "#95b1cd"
+  color13: &b_magenta "#cb91c1"
+  color14: &b_cyan "#92cacb"
+  color15: &b_white "#e9e9ec"
+
+# ---
+
+# Accent color for UI elements: magenta -> cyan.
+accent:
+  left: *b_magenta
+  right: *b_cyan
+
+# Whether the theme is lighter or darker.
+details: "darker"
+
+# Terminal background color: darker -> less dark.
+background:
+  # +/- 4 in lightness from black
+  top: "#17171c"
+  bottom: "#2a2a32"
+
+# The foreground color.
+foreground: *white
+
+# Define ANSI colors. Mostly unchanged from Ocean.
+terminal_colors:
+  normal:
+    black: *black
+    red: *red
+    green: *green
+    yellow: *yellow
+    blue: *blue
+    magenta: *magenta
+    cyan: *cyan
+    white: *white
+  bright:
+    black: *b_black
+    red: *b_red
+    green: *b_green
+    yellow: *b_yellow
+    blue: *b_blue
+    magenta: *b_magenta
+    cyan: *b_cyan
+    white: *b_white
