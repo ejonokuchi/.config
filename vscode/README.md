@@ -23,6 +23,7 @@ Note: this uses `black` as the default Python formatter, installed in a venv in 
 List of enabled extensions:
 - autoDocstring
 - C/C++
+- GitHub Copilot: AI-powered code completion
 - Markdown All in One
 - Markdown PDF
 - Material Icon Theme

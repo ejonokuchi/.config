@@ -5,20 +5,20 @@
   // -------
   // General
   // -------
-  "telemetry.telemetryLevel": "off", // = 10% increase
-
-  // ---------
-  // Interface
-  // ---------
-  "workbench.colorTheme": "Monokai",
   "editor.fontFamily": "Inconsolata, Menlo, Monaco, 'Courier New', monospace",
   "editor.renderLineHighlight": "gutter",
+  "telemetry.telemetryLevel": "off",
   "window.openFoldersInNewWindow": "on",
+  // = 10% increase
+  "window.zoomLevel": 0.5,
+  "workbench.colorTheme": "Monokai",
+  "workbench.iconTheme": "material-icon-theme",
 
   // -------
   // Editing
   // -------
   "editor.formatOnSave": true,
+  "editor.inlineSuggest.enabled": true,
   "editor.useTabStops": false,
   "files.defaultLanguage": "${activeEditorLanguage}",
   "files.trimTrailingWhitespace": true,
@@ -28,9 +28,9 @@
   // Terminal
   // --------
   // Sync with theme from iTerm/Warp for the feeling of being in the terminal.
-  "workbench.colorCustomizations" : {
-    "terminal.background" : "#212127",
-    "terminal.foreground" : "#c8c8d0",
+  "workbench.colorCustomizations": {
+    "terminal.background": "#212127",
+    "terminal.foreground": "#c8c8d0",
     "terminal.ansiBlack": "#212127",
     "terminal.ansiRed": "#cc6a75",
     "terminal.ansiGreen": "#accc92",
@@ -71,13 +71,20 @@
     },
     "editor.rulers": [88]
   },
-  "python.analysis.extraPaths": ["/Users/evan/.pyenvs/core"],
-  "python.defaultInterpreterPath": "/Users/evan/.pyenvs/core/bin/python",
+  "python.analysis.extraPaths": [
+    "/Users/evan/.pyenv/versions/3.10.10/bin"
+  ],
+  "python.defaultInterpreterPath": "/Users/evan/.pyenv/shims/python",
   "python.formatting.provider": "black",
-  "python.formatting.blackPath": "/Users/evan/.pyenvs/core/bin/black",
-  "python.formatting.blackArgs": ["--target-version=py39"],
-  "python.linting.pylintEnabled": false,
-  "python.sortImports.args": ["--profile", "black"],
+  "python.formatting.blackPath": "/Users/evan/.pyenv/versions/3.10.10/bin/black",
+  "python.formatting.blackArgs": [
+    "--target-version=py310"
+  ],
+  "python.linting.pylintEnabled": true,
+  "python.sortImports.args": [
+    "--profile",
+    "black"
+  ],
   "autoDocstring.docstringFormat": "numpy",
   "autoDocstring.generateDocstringOnEnter": false,
   "workbench.editorAssociations": {
@@ -86,7 +93,8 @@
 
   // YAML
   "[yaml]": {
-    "editor.rulers": [88]  // follow Python/black convention
+    // follow Python/black convention
+    "editor.rulers": [88]
   },
 
   // Javascript +
@@ -104,5 +112,16 @@
   "scss.lint.duplicateProperties": "warning",
   "scss.lint.float": "warning",
   "scss.lint.important": "warning",
-  "window.zoomLevel": 1
+
+  // ----------
+  // Extensions
+  // ----------
+
+  // GitHub Copilot
+  "github.copilot.enable": {
+    "*": true,
+    "yaml": false,
+    "plaintext": false,
+    "markdown": true
+  }
 }
