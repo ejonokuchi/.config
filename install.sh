@@ -50,10 +50,20 @@ call_timestamp=$(date +%s)
 
 # Install system packages
 
-print_header "Installing dependencies..."
+print_header "Installing dependencies using Homebrew. This may take a while..."
+
+# Check for homebrew
+which -s brew
+if [[ $? != 0 ]] ; then
+    # Install Homebrew
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+else
+    brew update
+fi
 
 brew_packages_to_install=(
     # referenced
+    pyenv
     tmux
     tree
     zsh-history-substring-search
@@ -63,6 +73,7 @@ brew_packages_to_install=(
     jq
     ngrok/ngrok/ngrok
     tldr
+    wget
 )
 
 print_info "Will try to install the following homebrew packages:"

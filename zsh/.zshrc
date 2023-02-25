@@ -121,7 +121,7 @@ export PS1='${venv_info_msg}%F{15}%B%n%b%f:%F{4}%}%1~/%f ${vcs_info_msg_0_}'
 autoload -Uz zmv
 
 # Enable history substring search.
-source /usr/local/share/zsh-history-substring-search/zsh-history-substring-search.zsh
+source /opt/homebrew/share/zsh-history-substring-search/zsh-history-substring-search.zsh
 # use the up and down arrows to match history substrings
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
@@ -146,36 +146,20 @@ source $ZDOTDIR/.aliases
 autoload -U $ZDOTDIR/functions/*(.:t)
 
 
-######################
-# Python virtualenvs #
-######################
+############
+# Homebrew #
+############
 
-# Use virtualenvwrapper to manage Python environments.
-export PYTHON_BASE_PATH="/Library/Frameworks/Python.framework/Versions/3.9/bin"
-export VIRTUALENV_PYTHON="${PYTHON_BASE_PATH}/python3"
-export VIRTUALENVWRAPPER_PYTHON="${PYTHON_BASE_PATH}/python3"
-export VIRTUALENVWRAPPER_VIRTUALENV="${PYTHON_BASE_PATH}/virtualenv"
-export WORKON_HOME="${HOME}/.venvs"
-# disable prompt changes to PS1
-export VIRTUAL_ENV_DISABLE_PROMPT=1
-
-# Load the lazy initialization script. Saves ~0.15s.
-export VIRTUALENVWRAPPER_SCRIPT="${PYTHON_BASE_PATH}/virtualenvwrapper.sh"
-source "${PYTHON_BASE_PATH}/virtualenvwrapper_lazy.sh"
-
-# # Load the initialization script.
-# source "${PYTHON_BASE_PATH}/virtualenvwrapper.sh"
+eval $(/opt/homebrew/bin/brew shellenv)
 
 
-####################
-# Google Cloud SDK #
-####################
+#########
+# pyenv #
+#########
 
-# Update PATH.
-[[ -f '/Users/evan/third_party/google-cloud-sdk/path.zsh.inc' ]] && source '/Users/evan/third_party/google-cloud-sdk/path.zsh.inc'
-
-# Enable command completion.
-[[ -f '/Users/evan/third_party/google-cloud-sdk/completion.zsh.inc' ]] && source '/Users/evan/third_party/google-cloud-sdk/completion.zsh.inc'
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="${PYENV_ROOT}/bin:${PATH}"
+eval "$(pyenv init -)"
 
 
 #######
@@ -187,10 +171,10 @@ export NVM_DIR="${HOME}/.nvm"
 
 # Lazy load with $ZDOTDIR/functions/nvm. Saves ~0.9s.
 
-# # Load nvm into the shell session, as a function.
-# [ -s "${NVM_DIR}/nvm.sh" ] && source "${NVM_DIR}/nvm.sh"
-# # Enable nvm bash completion
-# [ -s "${NVM_DIR}/bash_completion" ] && source "${NVM_DIR}/bash_completion"
+# Load nvm into the shell session, as a function.
+[ -s "${NVM_DIR}/nvm.sh" ] && source "${NVM_DIR}/nvm.sh"
+# Enable nvm bash completion
+[ -s "${NVM_DIR}/bash_completion" ] && source "${NVM_DIR}/bash_completion"
 
 
 #######
@@ -202,16 +186,27 @@ export PATH="${PATH}:${HOME}/.rvm/bin"
 
 # Lazy load with $ZDOTDIR/functions/rvm. Saves ~0.15s.
 
-# # Load RVM into the shell session, as a function.
-# [[ -s "${HOME}/.rvm/scripts/rvm" ]] && source "${HOME}/.rvm/scripts/rvm"
+# Load RVM into the shell session, as a function.
+[[ -s "${HOME}/.rvm/scripts/rvm" ]] && source "${HOME}/.rvm/scripts/rvm"
 
-# Configure OpenSSL version for Ruby, instead of re-installing per version.
-# Note: this may interfere with building old versions of Ruby (e.g <2.4) that use OpenSSL <1.1.
-export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
+# # Configure OpenSSL version for Ruby, instead of re-installing per version.
+# # Note: this may interfere with building old versions of Ruby (e.g <2.4) that use OpenSSL <1.1.
+# export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
 
-# rvm causes a conflict with `git HEAD^`.
+# rvm causes a conflict with git's "HEAD^".
 # See: https://github.com/ohmyzsh/ohmyzsh/issues/449
 setopt NO_NOMATCH
+
+
+####################
+# Google Cloud SDK #
+####################
+
+# Update PATH.
+[[ -f '/Users/evan/third-party/google-cloud-sdk/path.zsh.inc' ]] && source '/Users/evan/third-party/google-cloud-sdk/path.zsh.inc'
+
+# Enable command completion.
+[[ -f '/Users/evan/third-party/google-cloud-sdk/completion.zsh.inc' ]] && source '/Users/evan/third-party/google-cloud-sdk/completion.zsh.inc'
 
 
 # ---
