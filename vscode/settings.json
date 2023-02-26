@@ -56,6 +56,7 @@
 
   // Markdown
   "[markdown]": {
+    "editor.tabSize": 4,
     "editor.defaultFormatter": "yzhang.markdown-all-in-one"
   },
   "markdown.extension.list.indentationSize": "inherit",
